@@ -1,0 +1,140 @@
+<!-- doctor -->
+<div class="container bg-form2">
+    <div class=" header2 ">
+    
+    <h2 class="text-center ">  Doctor </h2>
+      
+    </div>
+    
+    <div class="row">
+    <!-- <div class="col-lg-5">
+      <div class="container  bg-form">
+    
+        
+      
+          <div class="form-group text-center">
+            <label for="email ">Doctors name:</label>
+            <input type="email" class="form-control input-f" placeholder="Enter Doctor name" [(ngModel)]="docName" >
+          </div>
+          <div class="form-group text-center">
+            <label for="pwd">Shift Timing:</label>
+            <input type="text" class="form-control input-f"placeholder="Enter shift" [(ngModel)]="shift">
+          </div>
+        
+       
+          <div class="row">
+          <div class="col-lg-12 form-group">
+            <button  *ngIf="isupdateA == false"  type="submit" class="btn btn-primary form-control" [disabled]="docName=='' || shift=='' " (click)="docSubmit()"> <i class="fa fa-sign-in"></i>
+             Submit</button>
+            </div>
+            <div class="col-lg-12 form-group">
+              <button  *ngIf="isupdateA == true" type="button" class="btn Edit form-control"   [disabled]="docName=='' || shift=='' " (click)="docUpdate()"> <i class="fa fa-refresh"></i>
+               Update</button>
+      
+              </div>
+            </div> -->
+
+            <div class="col-lg-5">
+              <div class="container  bg-form">
+            <form [formGroup]="docForm">
+                
+              
+                  <div class="form-group text-center">
+                    <label for="email ">Doctors name:</label>
+                    <input type="email" class="form-control input-f" placeholder="Enter Doctor name" formControlName="docName"  
+                    [ngClass]="{'is-invalid' : docs && f['docName'].errors }" >
+                    <div *ngIf="docs && f['docName'].errors" class="invalid-feedback">
+                     
+                      <div *ngIf="docs && f['docName'].errors['required']" >
+                       Doctors name is required
+                      </div>
+            
+                      <div *ngIf="docs && f['docName'].errors['minlength']" >
+                        Enter Minimum length 8  
+                        </div>
+                        <div *ngIf="docs && f['docName'].errors['maxlength']" >
+                          Enter Maximum length 15  
+                          </div>
+                  </div>
+                  </div>
+                  <div class="form-group text-center">
+                    <label for="pwd">Shift Timing:</label>
+                    <input type="text" class="form-control input-f"placeholder="Enter shift"  formControlName="shift"
+                    [ngClass]="{'is-invalid' : docs && f['shift'].errors }" >
+                    <div *ngIf="docs && f['shift'].errors" class="invalid-feedback">
+                     
+                      <div *ngIf="docs && f['shift'].errors['required']" >
+                     Shift timing is required
+                      </div>
+            
+                      <div *ngIf="docs && f['shift'].errors['minlength']" >
+                        Enter Minimum length 2 
+                        </div>
+                        
+                      <div *ngIf="docs && f['shift'].errors['maxlength']" >
+                        Enter Maximum length 9  
+                        </div>
+                  </div>
+                  </div>
+                
+               
+                  <div class="row">
+                  <div class="col-lg-12 form-group">
+                    <button   *ngIf="isupdateA == false"  type="submit" class="btn btn-primary form-control"  (click)="docSubmit()"> <i class="fa fa-sign-in"></i>
+                     Submit</button>
+                    </div>
+                
+                    <div class="col-lg-12 form-group">
+                      <button  *ngIf="isupdateA == true" type="button" class="btn Edit form-control"    (click)="docUpdate()"> <i class="fa fa-refresh"></i>
+                       Update</button>
+              
+                      </div>
+                      </div>
+
+                     
+                    </form>
+                    </div>
+          </div>
+          <!-- <div class="alert alert-info form-control text-center"     *ngIf="isupdateA"     style=" margin-left: 5px; border-radius: 30px; padding: 5px; padding-left: 20px ; width: 95%;">
+            <strong>Info Updated!</strong> Your Info is successfully updated.
+          </div> -->
+    
+    <div class="col-lg-7 " >
+      <div class="  md-form active-pink active-pink-2 mb-3 mt-0">
+        <i class="fa fa-search" style="width: 5%; color: rgb(19, 153, 113);margin-left: 20px;" ></i>
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search" style="width: 87%; display: inline-block;"  [(ngModel)]="searchkey">
+      </div>
+      <div class="col-lg-12 table-responsive" style="height: 250px;">
+      <table class="table table-light " style="color: rgb(134, 9, 61); font-weight: 700; border:#000 solid 0.1px;">
+        <thead>
+          <tr class="header-th ">
+            <th >Doctors Name</th>
+            <th >Shift Timing</th>
+            <th >Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <tr style=" border-bottom:#000 solid 0.1px;"  *ngFor="let doc of docList |filter: searchkey; let idx=index">
+    
+            <td>{{doc.docName}}</td>
+            <td>{{doc.shift}}</td>
+            <td>
+              <div class="row">
+                <div class="col-lg-6"><button class="btn Edit form-control" (click)="docEdit(doc)"> <i class="fa fa-edit" ></i> Edit</button></div>
+                <div class="col-lg-6"><button class="btn delete form-control" (click)="docDelete(doc.id)"> <i class="fa fa-trash-o"></i> Delete</button></div>
+              </div>
+            </td>
+         </tr>
+          
+          </tbody>
+      </table>
+    </div>
+    </div>
+    
+    </div>
+    </div>
+  
+    
+    <!-- doctor -->
+    

@@ -1,0 +1,113 @@
+/* You can add global styles to this file, and also import other style files */
+.header-n{
+    margin-top: 20px;
+
+    background-color:rgba(213, 213, 221, 0.829) ;
+}
+
+
+.header-h{
+    background-color: #ced8f5;
+}
+
+
+.header-v{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #d4b8b3;
+}
+
+
+.header{
+    margin-top: 15px;
+    margin-bottom: 0px;
+    background-color: rgb(231, 58, 58);
+    color: white;
+}
+.header-th{
+    margin-top: 15px;
+    margin-bottom: 0px;
+    background-color: rgb(19, 153, 113);
+    color: white;
+}
+.hr-l{
+    border: solid 0.5px;
+}
+label{
+    font-weight: 600;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: large;
+}
+.header1{
+    font-family: monospace;
+    margin-top: 30px;
+    color: rgb(14, 116, 250);
+}
+.header2{
+    
+    margin-top: 30px;
+    padding-bottom: 1px;
+    padding-top: 2px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-bottom: 30px;
+    color: rgb(236, 100, 37);
+    border: rgb(236, 100, 37) solid 0.1px;
+    background-color: rgb(253, 241, 190);
+    border-radius: 30px;
+}
+.bg-form{
+    margin-top: 10px;
+     margin-bottom: 20px;
+     color: #333;
+     border: #000 solid 0.1px;
+     border-radius: 30px;
+    
+ }
+ .bg-form2{
+    margin-top: 10px;
+   
+     
+     color: #333;
+     border: #000 solid 0.1px;
+     
+    
+ }
+
+.Edit {
+    border: solid rgb(114, 107, 2) 0.1px;
+    color: rgb(44, 44, 8);
+
+}
+
+.delete {
+    border: solid rgb(241, 21, 21) 3px;
+    color: rgb(240, 17, 17);
+
+}
+
+.success{
+    border: solid rgb(2, 167, 10) 3px;
+    color: rgb(14, 155, 1);
+}
+
+.input-f{
+ border: rgb(84, 66, 247) solid;
+ background-color: rgb(252, 236, 222);
+ 
+}
+
+
+
+
+  .active-pink-2 input.form-control[type=text]:focus:not([readonly]) {
+    border-bottom: 2px solid rgb(19, 153, 113);
+    box-shadow: 0 1px 0 0 rgb(19, 153, 113);
+    border: 0px;
+    border-radius: 0%;
+  }
+  .active-pink input.form-control[type=text] {
+    border-bottom: 2px solid rgb(19, 153, 113);
+    box-shadow: 0 2px 0 0 rgb(19, 153, 113);
+    border: 0px;
+    border-radius: 0%;
+  }

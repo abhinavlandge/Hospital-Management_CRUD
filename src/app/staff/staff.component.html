@@ -1,0 +1,133 @@
+<!-- staff -->
+<div class="container bg-form2">
+    <div class=" header2 ">
+    
+    <h2 class="text-center ">Staff</h2>
+      
+    </div>
+    
+    <div class="row">
+    <div class="col-lg-5">
+      <div class="container  bg-form">
+    
+<!--         
+      
+          <div class="form-group text-center">
+            <label for="text ">Staff ID:</label>
+            <input type="text" class="form-control input-f" placeholder="Enter Staff ID" [(ngModel)]="staffId" >
+          </div>
+          <div class="form-group text-center">
+            <label for="pwd">Salary:</label>
+            <input type="text" class="form-control input-f"placeholder="Enter Salary" [(ngModel)]="salary">
+          </div>
+        
+       
+          <div class="row">
+          <div class="col-lg-12 form-group">
+            <button  *ngIf="isupdateC == false"   type="submit" class="btn btn-primary form-control" [disabled]="staffId=='' || salary=='' " (click)="staffSubmit()"> <i class="fa fa-sign-in"></i>
+              Submit</button>
+            </div>
+            <div class="col-lg-12 form-group">
+              <button  *ngIf="isupdateC == true"   type="button" class="btn Edit form-control"   [disabled]="staffId=='' || salary=='' " (click)="staffUpdate()"> <i class="fa fa-refresh"></i>
+               Update</button>
+      
+              </div>
+            </div> -->
+
+  
+<form [formGroup]="staffForm">  
+            <div class="form-group text-center">
+              <label for="text ">Staff ID:</label>
+              <input type="text" class="form-control input-f" placeholder="Enter Staff ID" formControlName="staffId" 
+              [ngClass]="{'is-invalid' : staffs && f['staffId'].errors }" >
+              <div *ngIf="staffs && f['staffId'].errors" class="invalid-feedback">
+               
+                <div *ngIf="staffs && f['staffId'].errors['required']" >
+                  Staff ID is required
+                </div>
+      
+                <div *ngIf="staffs && f['staffId'].errors['minlength']" >
+                  Enter Minimum length 6 
+                  </div>
+
+                  <div *ngIf="staffs && f['staffId'].errors['maxlength']" >
+                    Enter Maximum length 9  
+                    </div>
+            </div>
+            </div>
+            <div class="form-group text-center">
+              <label for="pwd">Salary:</label>
+              <input type="text" class="form-control input-f"placeholder="Enter Salary" formControlName="salary"
+              [ngClass]="{'is-invalid' : staffs && f['salary'].errors }" >
+              <div *ngIf="staffs && f['salary'].errors" class="invalid-feedback">
+               
+                <div *ngIf="staffs && f['salary'].errors['required']" >
+                  Salary is required
+                </div>
+      
+                <div *ngIf="staffs && f['salary'].errors['minlength']" >
+                  Enter Minimum length 5  
+                  </div>
+                  <div *ngIf="staffs && f['salary'].errors['maxlength']" >
+                    Enter Maximum length 7  
+                    </div>
+            </div>
+            </div>
+          
+         
+            <div class="row">
+            <div class="col-lg-12 form-group">
+              <button   *ngIf="isupdateC == false"   type="submit" class="btn btn-primary form-control"  (click)="staffSubmit()"> <i class="fa fa-sign-in"></i>
+                Submit</button>
+              </div>
+              <div class="col-lg-12 form-group">
+                <button  *ngIf="isupdateC == true"   type="button" class="btn Edit form-control"    (click)="staffUpdate()"> <i class="fa fa-refresh"></i>
+                 Update</button>
+        
+                </div>
+              </div>
+            </form>    
+            </div>
+
+          </div>
+        
+  
+    <div class="col-lg-7">
+      <div class="  md-form active-pink active-pink-2 mb-3 mt-0">
+        <i class="fa fa-search" style="width: 5%; color: rgb(19, 153, 113);margin-left: 20px;" ></i>
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search" style="width: 87%; display: inline-block;"  [(ngModel)]="searchkey">
+      </div>
+      <div class="col-lg-12 table-responsive" style="height: 250px;">
+      <table class="table table-light" style="color: rgb(134, 9, 61); font-weight: 700; border:#000 solid 0.1px;">
+        <thead>
+          <tr class="header-th ">
+            <th >Staff ID</th>
+            <th >Salary</th>
+            <th >Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style=" border:#000 solid 0.1px;"  *ngFor="let stf of staffList |filter: searchkey;let idx=index">
+    
+            <td>{{stf.staffId}}</td>
+            <td>{{stf.salary}}</td>
+            <td>
+              <div class="row">
+                <div class="col-lg-6"><button class="btn Edit form-control" (click)="staffEdit(idx,stf)"> <i class="fa fa-edit"></i> Edit</button></div>
+                <div class="col-lg-6"><button class="btn delete form-control" (click)="staffDelete(idx)"> <i class="fa fa-trash-o"></i> Delete</button></div>
+              </div>
+            </td>
+          </tr>
+          
+         
+        </tbody>
+      </table>
+    </div>
+  
+    </div>
+    
+    </div>
+    
+    </div>
+  
+  <!-- staff -->

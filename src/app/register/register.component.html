@@ -1,0 +1,169 @@
+<!-- signin -->
+<div class="container  bg-form">
+
+    <div class=" header-n">
+    <h2 class="text-center " ><i class="fa fa-user-circle"></i> Sign In</h2>
+    <hr style="border: solid #fff 0.1px;">
+  </div>
+<!--   
+  <div class="form-group text-center">
+    <label for="email ">First name:</label>
+    <input type="email" class="form-control input-f" placeholder="Enter First name" [(ngModel)]="fName" >
+  </div>
+  <div class="form-group text-center">
+    <label for="email ">Last name:</label>
+    <input type="email" class="form-control input-f" placeholder="Enter Last name" [(ngModel)]="lName" >
+  </div>
+  <div class="form-group text-center">
+    <label for="email ">Mobile no. :</label>
+    <input type="email" class="form-control input-f" placeholder="Enter Mobile no." [(ngModel)]="mobNo" >
+  </div>
+  
+      <div class="form-group text-center">
+        <label for="email ">Email:</label>
+        <input type="email" class="form-control input-f" placeholder="Enter email" [(ngModel)]="email" >
+      </div>
+      <div class="form-group text-center">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control input-f"placeholder="Enter password" [(ngModel)]="spwd">
+      </div>
+      <div class="form-group form-check">
+        <label class="form-check-label">
+          <input class="form-check-input input-f" type="checkbox" value="Remeber" [(ngModel)]="srMe"> Remember me
+        </label>
+      </div>
+   
+      <div class="row">
+      <div class="col-lg-6 form-group">
+        <button type="submit" class="btn success form-control" [disabled]="fName=='' || lName=='' || mobNo=='' || email=='' || spwd=='' " (click)="signIn()"> <i class="fa fa-sign-in"></i>
+          sign in</button>
+        </div>
+        <div class="col-lg-6 form-group">
+        <button type="button" class="btn delete form-control" (click)="clearsignin()"><i class="fa fa-eraser"></i>
+          Clear</button>
+        </div>
+      </div>
+      <div class="alert alert-success form-control text-center"     *ngIf="isSigninsuccessful"     style=" margin-left: 25px; border-radius: 30px; padding: 5px; padding-left: 20px ; width: 95%;">
+        <strong>Success!</strong> You have Registered successfully.
+      </div> -->
+
+
+
+<form [formGroup]="regForm">
+       
+  <div class="form-group text-center">
+    <label for="email ">Email:</label>
+    <input type="email" class="form-control input-f" placeholder="Enter First name" formControlName = "email"
+    [ngClass]="{'is-invalid' : signin && f['email'].errors }" >
+    <div *ngIf="signin && f['email'].errors" class="invalid-feedback">
+     
+      <div *ngIf="signin && f['email'].errors['required']" >
+        Email is required
+      </div>
+
+      <div *ngIf="signin && f['email'].errors['minlength']" >
+      Enter Minimum length 8  
+      </div>
+      <div *ngIf="signin && f['email'].errors['email']" >
+        Enter valid email address 
+        </div>
+  </div>
+  </div>
+  <div class="form-group text-center">
+    <label for="email ">First name:</label>
+    <input type="email" class="form-control input-f" placeholder="Enter Last name"  formControlName = "fName"
+    [ngClass]="{'is-invalid' : signin && f['fName'].errors }" >
+    <div *ngIf="signin && f['fName'].errors" class="invalid-feedback">
+     
+      <div *ngIf="signin && f['fName'].errors['required']" >
+       first name is required
+      </div>
+
+      <div *ngIf="signin && f['fName'].errors['minlength']" >
+      Enter Minimum length 8  
+      </div>
+
+      <div *ngIf="signin && f['fName'].errors['maxlength']" >
+        Enter Maximum length 12  
+        </div>
+  </div>
+  </div>
+  <div class="form-group text-center">
+    <label for="email ">Last name :</label>
+    <input type="email" class="form-control input-f" placeholder="Enter Mobile no." formControlName = "lName" 
+    [ngClass]="{'is-invalid' : signin && f['lName'].errors }" >
+    <div *ngIf="signin && f['lName'].errors" class="invalid-feedback">
+     
+      <div *ngIf="signin && f['lName'].errors['required']" >
+       last name is required
+      </div>
+
+      <div *ngIf="signin && f['lName'].errors['minlength']" >
+        Enter Minimum length 8  
+        </div>
+        <div *ngIf="signin && f['lName'].errors['maxlength']" >
+          Enter Maximum length 12 
+          </div>
+  </div>
+  </div>
+  
+      <div class="form-group text-center">
+        <label for="email ">Mobile no.:</label>
+        <input type="email" class="form-control input-f" placeholder="Enter email" formControlName = "mobNo"
+        [ngClass]="{'is-invalid' : signin && f['mobNo'].errors }" >
+        <div *ngIf="signin && f['mobNo'].errors" class="invalid-feedback">
+         
+          <div *ngIf="signin && f['mobNo'].errors['required']" >
+           Mobile no. is required
+          </div>
+
+          <div *ngIf="signin && f['mobNo'].errors['minlength']" >
+          Enter Minimum length 10 
+          </div>
+          <div *ngIf="signin && f['mobNo'].errors['maxlength']" >
+            Enter Maximum length 12 
+            </div>
+      </div>
+      </div>
+      <div class="form-group text-center">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control input-f"placeholder="Enter password" formControlName = "spwd"
+        [ngClass]="{'is-invalid' : signin && f['spwd'].errors }" >
+        <div *ngIf="signin && f['spwd'].errors" class="invalid-feedback">
+         
+          <div *ngIf="signin && f['spwd'].errors['required']" >
+           password is required
+          </div>
+
+          <div *ngIf="signin && f['spwd'].errors['minlength']" >
+            Enter Minimum length 8  
+            </div>
+
+            <div *ngIf="signin && f['spwd'].errors['maxlength']" >
+              Enter Maximum length 12  
+              </div>
+      </div>
+      </div>
+      <div class="form-group form-check">
+        <label class="form-check-label">
+          <input class="form-check-input input-f" type="checkbox" value="Remeber" formControlName = "srMe"> Remember me
+        </label>
+      </div>
+   
+      <div class="row">
+      <div class="col-lg-6 form-group">
+        <button type="submit" class="btn success form-control"  (click)="signIn()"> <i class="fa fa-sign-in"></i>
+          sign in</button>
+        </div>
+
+        <div class="col-lg-6 form-group">
+        <button type="reset" class="btn delete form-control" (click)="clearsignin()"><i class="fa fa-eraser"></i>
+          Clear</button>
+        </div>
+      </div>
+    
+      
+    </form>
+  </div>
+
+  <!-- signin -->

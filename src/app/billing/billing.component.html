@@ -1,0 +1,135 @@
+<!-- billing -->
+<div class="container bg-form2">
+    <div class=" header2 ">
+    
+    <h2 class="text-center ">Billing</h2>
+      
+    </div>
+    
+    <div class="row">
+    <div class="col-lg-5">
+      <div class="container  bg-form">
+    
+        
+<!--       
+          <div class="form-group text-center">
+            <label for="text ">Paid:</label>
+            <input type="text" class="form-control input-f" placeholder="Enter Paid" [(ngModel)]="paid" >
+          </div>
+          <div class="form-group text-center">
+            <label for="pwd">Balance:</label>
+            <input type="text" class="form-control input-f"placeholder="Enter Balance" [(ngModel)]="balance">
+          </div>
+  
+          
+       
+          <div class="row">
+          <div class="col-lg-12 form-group">
+            <button type="submit" *ngIf="isupdateD==false" class="btn btn-primary form-control" [disabled]="paid=='' || balance=='' " (click)="billSubmit()"> <i class="fa fa-sign-in"></i>
+              Submit</button>
+            </div>
+            <div class="col-lg-12 form-group">
+              <button type="button" *ngIf="isupdateD==true" class="btn Edit form-control"   [disabled]="paid=='' || balance=='' " (click)="billUpdate()"> <i class="fa fa-refresh"></i>
+               Update</button>
+      
+              </div> -->
+
+
+
+                <form [formGroup]="billForm">
+          <div class="form-group text-center">
+            <label for="text ">Paid:</label>
+            <input type="text" class="form-control input-f" placeholder="Enter Paid"  formControlName="paid"  
+             [ngClass]="{'is-invalid' : billsub && f['paid'].errors }" >
+            <div *ngIf="billsub && f['paid'].errors" class="invalid-feedback">
+             
+              <div *ngIf="billsub && f['paid'].errors['required']" >
+                Paid is required
+              </div>
+    
+              <div *ngIf="billsub && f['paid'].errors['minlength']" >
+                Enter Minimum length 4  
+                </div>
+
+                <div *ngIf="billsub && f['paid'].errors['maxlength']" >
+                  Enter Maximum length 7  
+                  </div>
+          </div>
+          </div>
+          <div class="form-group text-center">
+            <label for="pwd">Balance:</label>
+            <input type="text" class="form-control input-f"placeholder="Enter Balance" formControlName="balance"
+            [ngClass]="{'is-invalid' : billsub && f['balance'].errors }" >
+            <div *ngIf="billsub && f['balance'].errors" class="invalid-feedback">
+             
+              <div *ngIf="billsub && f['balance'].errors['required']" >
+                Balance is required
+              </div>
+    
+              <div *ngIf="billsub && f['balance'].errors['minlength']" >
+                Enter Minimum length 4 
+                </div>
+
+                <div *ngIf="billsub && f['balance'].errors['maxlength']" >
+                  Enter Maximum length 7 
+                  </div>
+          </div>
+          </div>
+  
+          
+       
+          <div class="row">
+          <div class="col-lg-12 form-group">
+            <button type="submit"  *ngIf="isupdateD==false" class="btn btn-primary form-control" (click)="billSubmit()"> <i class="fa fa-sign-in"></i>
+              Submit</button>
+            </div>
+            <div class="col-lg-12 form-group">
+              <button type="button" *ngIf="isupdateD==true"  class="btn Edit form-control"   (click)="billUpdate()"> <i class="fa fa-refresh"></i>
+               Update</button>
+      
+              </div>
+            </div>
+          </form>
+          </div>
+          <!-- <div class="alert alert-info form-control text-center"     *ngIf="isupdateD"     style=" margin-left: 5px; border-radius: 30px; padding: 5px; padding-left: 20px ; width: 95%;">
+            <strong>Info Updated!</strong> Your Info is successfully updated.
+          </div> -->
+    </div>
+    <div class="col-lg-7">
+      <div class="  md-form active-pink active-pink-2 mb-3 mt-0">
+        <i class="fa fa-search" style="width: 5%; color: rgb(19, 153, 113);margin-left: 20px;" ></i>
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search" style="width: 87%; display: inline-block;"  [(ngModel)]="searchkey">
+      </div>
+      <div class="col-lg-12 table-responsive" style="height: 250px;">
+      <table class="table table-light" style="color: rgb(134, 9, 61); font-weight: 700; border:#000 solid 0.1px;">
+        <thead>
+          <tr class="header-th ">
+            <th >Paid</th>
+            <th >Balance</th>
+            <th >Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style=" border:#000 solid 0.1px;"  *ngFor="let bill of billList |filter: searchkey;let idx=index">
+    
+            <td>{{bill.paid}}</td>
+            <td>{{bill.balance}}</td>
+            <td>
+              <div class="row">
+                <div class="col-lg-6"><button class="btn Edit form-control" (click)="billEdit(idx,bill)" > <i class="fa fa-edit"></i> Edit</button></div>
+                <div class="col-lg-6"><button class="btn delete form-control" (click)="billDelete(idx)"> <i class="fa fa-trash-o"></i> Delete</button></div>
+              </div>
+            </td>
+          </tr>
+          
+         
+        </tbody>
+      </table>
+    </div>
+    </div>
+    
+    </div>
+    
+    </div>
+  
+  <!-- billing -->

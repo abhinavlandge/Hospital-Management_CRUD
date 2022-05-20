@@ -1,0 +1,74 @@
+
+<!-- log in -->
+<div class="container  bg-form">
+
+    <div class=" header-n">
+    <h2 class="text-center "> <i class="fa fa-user-circle-o"></i> Login </h2>
+    <hr style="border: solid #fff 0.1px;">
+  </div>
+  <form [formGroup]="logForm">
+  
+      
+      <div class="form-group text-center">
+        <label for="email ">Username:</label>
+        <input type="email" class="form-control input-f" placeholder="Enter Username" formControlName="usr"      
+           [ngClass]="{'is-invalid' : login && f['usr'].errors }" >
+        <div *ngIf="login && f['usr'].errors" class="invalid-feedback">
+         
+          <div *ngIf="login && f['usr'].errors['required']" >
+            Email is required
+          </div>
+        
+
+          <div *ngIf="login && f['usr'].errors['minlength']" >
+          Enter Minimum length 12 digit 
+          </div>
+          <div *ngIf="login && f['usr'].errors['email']" >
+            Enter valid email address  
+            </div>
+          </div>
+      </div>
+      <div class="form-group text-center">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control input-f"placeholder="Enter password" formControlName="pwd"
+        [ngClass]="{'is-invalid' : login && f['pwd'].errors }" >
+        <div *ngIf="login && f['pwd'].errors" class="invalid-feedback">
+         
+          <div *ngIf="login && f['pwd'].errors['required']" >
+            password is required
+          </div>
+
+          <div *ngIf="login && f['pwd'].errors['minlength']" >
+            Enter Minimum length 8 digit 
+            </div>
+            
+            <div *ngIf="login && f['pwd'].errors['maxlength']" >
+              Enter Maximum length 12 digit 
+              </div>
+
+
+        </div>
+      </div>
+      <div class="form-group form-check">
+        <label class="form-check-label">
+          <input class="form-check-input input-f" type="checkbox" value="Remeber" formControlName="rMe"> Remember me
+        </label>
+      </div>
+      <div class="row">
+      <div class="col-lg-6 form-group">
+     
+
+     <button type="submit" class="btn-success form-control"  (click)="logIn()"> <i class="fa fa-sign-in"></i>
+          Login</button>
+        </div>
+      <div class="col-lg-6 form-group">
+      <button type="reset" class="btn-danger form-control" (click)="clearlog()"><i class="fa fa-eraser"></i>
+        Clear</button>
+      </div>
+    </div>
+    
+  </form>
+
+  </div>
+  
+  <!-- login -->
